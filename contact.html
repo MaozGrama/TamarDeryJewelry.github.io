@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Tamar Dery Jewelry</title>
+    <style>
+        /* Loading Screen Styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff; /* White background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Ensure loading screen appears on top of other content */
+            opacity: 1; /* Initially visible */
+            transition: opacity 0.5s ease; /* Smooth fade transition */
+        }
+        
+        .loading-message {
+            font-size: 24px;
+            color: #333; /* Dark text color */
+        }
+        
+        /* Hide loading screen when content is fully loaded */
+        .loading-screen.loading {
+            opacity: 0; /* Fade out */
+            pointer-events: none; /* Disable clicks */
+        }
+        
+        /* Original Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        textarea {
+            height: 150px;
+        }
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #444;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        footer p {
+            font-size: 14px;
+        }
+
+        /* Mobile Styles */
+        @media screen and (max-width: 600px) {
+            form {
+                padding: 10px;
+            }
+            input[type="text"],
+            input[type="email"],
+            textarea {
+                font-size: 14px;
+            }
+            input[type="submit"] {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen Markup -->
+    <div class="loading-screen">
+        <div class="loading-message">Loading...</div>
+    </div>
+
+    <!-- Your main content goes here -->
+    <header>
+        <h1>Tamar Dery Jewelry</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">About Us</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <section>
+        <h2>Contact Us</h2>
+        <form action="#" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2024 Tamar Dery Jewelry. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript to handle transition between pages and show/hide loading screen -->
+    <script>
+        // Hide loading screen when content is fully loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector('.loading-screen').classList.add('loading');
+        });
+    </script>
+</body>
+</html>
