@@ -4,87 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exquisite Jewelry - Tamar Dery Jewelry</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link rel="stylesheet" href="dropdown.css">
     <style>
-        /* Loading Screen Styles */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #fff; /* White background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000; /* Ensure loading screen appears on top of other content */
-            opacity: 1; /* Initially visible */
-            transition: opacity 0.5s ease; /* Smooth fade transition */
-        }
-        
-        .loading-message {
-            font-size: 24px;
-            color: #333; /* Dark text color */
-        }
-        
-        /* Hide loading screen when content is fully loaded */
-        .loading-screen.loading {
-            opacity: 0; /* Fade out */
-            pointer-events: none; /* Disable clicks */
-        }
-        
-        /* Original Styles */
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
-            color: #333;
+            background-color: #e7e7e7;
+            color: #503b3b;
         }
         header {
-            background-color: #333;
-            color: #fff;
+            background-color: #503d3d;
             padding: 20px;
             text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .logo img {
+            max-width: 500px;
         }
         nav {
-            background-color: #444;
-            padding: 10px 0;
-            text-align: center;
+            background-color: #684949;
+            padding: 35px 0;
+            text-align: left;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            position:fixed; top: 0;
         }
         nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0 10px;
-            font-size: 18px;
-            transition: all 0.3s ease;
+            margin: 0 50px;
+            font-size: 30px;
+            transition: all 0.1s ease;
         }
         nav a:hover {
-            text-decoration: underline;
+            text-decoration:none;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #684949;
+            min-width: 160px;
+            z-index: 1;
+            animation: slide-in 2s forwards;
+        }
+        .dropdown-content a {
+            color: white;
+            outline: #333;
+            padding: 40px 40px;
+            text-decoration: none;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            display: block;
+            transition: background-color 0.5s ease;
+        }
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block; 
+            color: #503b3b;
+            border-radius: 15px;
+            border-color: #503d3d;
+            height: 2000px;
+            width: 500px;
+        }
+        .menu-btn {
+            display: block;
+            position: relative;
+        }
+        @media screen and (max-width: 600px) {
+            nav a {
+                font-size: 20px;
+                margin: 0 10px;
+                border-radius: 10px;
+            }
+            .menu-btn {
+                display: block;
+                background-color: #444;
+                color: #fff;
+                border: none;
+                padding: 10px 15px;
+                font-size: 18px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+            }
         }
         section {
             padding: 20px;
             margin: 20px auto;
-            max-width: 800px;
+            max-width: 90%;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(191, 54, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden; /* Hide overflow */
+            text-align: center; /* Center align content */
         }
         footer {
             background-color: #333;
             color: #fff;
             text-align: center;
             padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            margin-top: 20px;
         }
         .banner {
-            background-color: #333;
+       background-color: #684949;
+;
             color: #fff;
             text-align: center;
             padding: 40px 0;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
         .banner h1 {
-            font-size: 48px;
+            font-size: 36px;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
@@ -93,22 +132,40 @@
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-        .slider {
-            width: 100%;
-            margin: 0 auto;
+        .slider-container {
+            color: #919191;
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            white-space: nowrap;
+            grid: gap 0px;
         }
-        .slider img {
-            max-width: 100%;
-            border-radius: 8px;
+        .slider-inner {
+            display: inline-block;
+            animation: slide 30s linear infinite; /* Apply sliding animation */ 
+        }
+        .slider-inner img {
+            max-width: calc(100% / 3); /* Set image width to 1/3 of container width */
+            height: 400px;
+            max-width: auto;
+            object-fit:fill;
+        }
+        .slider-container:hover .slider-inner{
+            animation-play-state: paused;
         }
         .product {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
         }
         .product img {
-            max-width: 45%;
+            max-width: 40%; /* Decreased image size */
             border-radius: 8px;
         }
         .product-info {
@@ -126,105 +183,104 @@
         footer p {
             font-size: 14px;
         }
+        @keyframes slide {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(calc(-100% * 3)); /* Adjust to the number of images */
+            }
+        }
 
-        /* Mobile Styles */
-        @media screen and (max-width: 600px) {
-            header {
-                padding: 15px;
+        /* New styles for dropdown animation */
+        .dropdown-content.fade-out {
+            opacity: 0;
+            animation: fadeOut 0.5s ease-in-out;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
             }
-            nav {
-                padding: 8px 0;
-            }
-            nav a {
-                font-size: 16px;
-            }
-            .banner h1 {
-                font-size: 36px;
-            }
-            .banner p {
-                font-size: 18px;
-            }
-            .product {
-                flex-direction: column;
-            }
-            .product img {
-                max-width: 100%;
-                margin-bottom: 15px;
-            }
-            .product-info {
-                max-width: 100%;
-                text-align: center;
+            to {
+                opacity: 0;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Loading Screen Markup -->
-    <div class="loading-screen">
-        <div class="loading-message">Loading...</div>
-    </div>
-
-    <!-- Your main content goes here -->
     <header>
-        <h1>Tamar Dery Jewelry</h1>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://i.ibb.co/6wQ33J6/tamar-dery-logo2.png" alt="Tamar Dery Jewelry">
+            </a>
+        </div>
     </header>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="#">Shop</a>
-        <a href="#">About Us</a>
-        <a href="contact.html">Contact</a>
+        <div class="dropdown">
+            <a href="#" class="menu-btn">&#9776;</a>
+            <div class="dropdown-content">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+                <a href="#">Shop</a>
+            </div>
+        </div>
     </nav>
     <section class="banner">
         <h1>Discover Your Perfect Piece</h1>
         <p>Exquisite Jewelry Crafted with Passion</p>
     </section>
-    <section class="slider">
-        <div><img src="https://cdn0.weddingwire.com/article/4481/original/1280/jpeg/21844-yellow-gold-charles-colvard.jpeg" alt="Gold Diamond Ring"></div>
-        <div><img src="https://www.yessayan.com/cdn/shop/products/IMG_5542R.jpg?v=1631592422&width=770" alt="Silver Sapphire Necklace"></div>
-        <div><img src="https://us.pandora.net/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwb6770bc8/productimages/singlepackshot/382778C01_RGB.jpg?sw=900&sh=900&sm=fit&sfrm=png&bgcolor=F5F5F5" alt="bloodredring"></div>
-        <!-- Add more images here -->
-    </section>
-    <section>
-        <h2>About Us</h2>
-        <p>Tamar Dery Jewelry is committed to providing our customers with the finest quality jewelry that is as unique and beautiful as they are. Our collection includes a wide range of stunning pieces crafted from precious metals and gemstones, each meticulously designed to capture the essence of elegance and sophistication.</p>
-    </section>
-    <section>
-        <h2>Featured Products</h2>
-        <div class="product">
-            <img src="https://cdn0.weddingwire.com/article/4481/original/1280/jpeg/21844-yellow-gold-charles-colvard.jpeg" alt="Gold Diamond Ring">
-            <div class="product-info">
-                <h3>Gold Diamond Ring</h3>
-                <p>Stunning gold ring featuring a sparkling diamond centerpiece.</p>
-            </div>
+    <div class="slider-container">
+        <div class="slider-inner">
+            <img src="https://www.melaniecasey.com/cdn/shop/files/2021-07-19_Diamond_Bands_Held_YG_1_1000x.jpg?v=1627591094%201000w" alt="Gold Diamond Ring" class="active">
+            <img src="https://www.melaniecasey.com/cdn/shop/files/2021-05-13_Oval_Sapphire_Snowdrift_Blue_1.63ct._OOAK_YG_1x1_f319a08e-8468-4b99-832e-a47faad0183f_1300x.jpg?v=1642004226%201300w" alt="Oval Sapphire">
+            <img src="https://asset.swarovski.com/images/c_crop,g_xy_center,w_4386,h_5490,x_11703,y_5754/dpr_auto,f_auto,q_auto,c_lfill,w_759,h_950/swa-cms/2023_HOLIDAY_VISUAL_MODEL-12_EXT_OF_GL_72DPI_RGB/.jpg" alt="Diamond Tempo Ring">
+            <img src="https://www.tacori.com/media/catalog/category/Allure_module3_750x882_M.jpg" alt="Gold Diamond Ring" class="active">
+            <img src="https://www.glamrocksjewelry.com/cdn/shop/products/L3110774_6e59e192-4b53-426c-bae6-81446c7ef9f0_2000x.jpg?v=1650829182" alt="Oval Sapphire">
+            <img src="https://cdn.shopify.com/s/files/1/2179/1225/collections/2021-04-15_Diamond_Tempo_Ring_2ct._YG_1.jpg?v=1676919912" alt="Diamond Tempo Ring">
         </div>
-        <div class="product">
-            <img src="https://www.yessayan.com/cdn/shop/products/IMG_5542R.jpg?v=1631592422&width=770" alt="Silver Sapphire Necklace">
-            <div class="product-info">
-                <h3>Silver Sapphire Necklace</h3>
-                <p>Elegant silver necklace adorned with a brilliant sapphire pendant.</p>
-            </div>
+    </div>
+    <section class="product">
+        <img src="https://cdn0.weddingwire.com/article/4481/original/1280/jpeg/21844-yellow-gold-charles-colvard.jpeg" alt="Gold Diamond Ring">
+        <div class="product-info">
+            <h3>Gold Diamond Ring</h3>
+            <p>An elegant gold ring encrusted with diamonds, perfect for special occasions.</p>
+        </div>
+    </section>
+    <section class="product">
+        <img src="https://www.yessayan.com/cdn/shop/products/IMG_5542R.jpg?v=1631592422&width=770" alt="Silver Sapphire Necklace">
+        <div class="product-info">
+            <h3>Silver Sapphire Necklace</h3>
+            <p>A stunning silver necklace featuring a dazzling sapphire centerpiece.</p>
+        </div>
+    </section>
+    <section class="product">
+        <img src="https://kalifano.com/cdn/shop/products/kalifano-gemstone-bracelets-howlite-turquoise-8mm-beads-with-yellow-agate-and-black-and-silver-accent-beads-double-wrap-elastic-gemstone-bracelet-white-bgi2-011-34248778318018.jpg?v=1659074476&width=2048" alt="Gemstone Bracelet">
+        <div class="product-info">
+            <h3>Gemstone Bracelet</h3>
+            <p>A fashionable bracelet adorned with colorful gemstones, adding flair to any outfit.</p>
         </div>
     </section>
     <footer>
-        <p>&copy; 2024 Tamar Dery Jewelry. All rights reserved.</p>
+        <p>&copy; 2024 Tamar Dery Jewelry. All Rights Reserved.</p>
     </footer>
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
-        $('.slider').slick({
-            infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 2000,
-            dots: true,
-            arrows: false
+        // JavaScript to handle dropdown animation
+        const dropdownContent = document.querySelector('.dropdown-content');
+
+        document.querySelector('nav').addEventListener('mouseenter', function() {
+            dropdownContent.style.display = 'block';
+            setTimeout(() => {
+                dropdownContent.classList.remove('fade-out');
+            }, 10);
         });
 
-        // Hide loading screen when content is fully loaded
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelector('.loading-screen').classList.add('loading');
+        document.querySelector('nav').addEventListener('mouseleave', function() {
+            dropdownContent.classList.add('fade-out');
+            setTimeout(() => {
+                dropdownContent.style.display = 'none';
+            }, 500);
         });
     </script>
 </body>

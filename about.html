@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Tamar Dery Jewelry</title>
+    <title>About Us - Tamar Dery Jewelry</title>
     <style>
         /* Loading Screen Styles */
         .loading-screen {
@@ -34,17 +34,24 @@
         
         /* Original Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f8f8f8;
             color: #333;
         }
         header {
-            background-color: #333;
-            color: #fff;
+            background-color: transparent;
             padding: 20px;
             text-align: center;
+        }
+        .logo {
+            max-width: 300px;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            filter: grayscale(100%) invert(100%);
+            cursor: pointer; /* Change cursor to pointer when hovering */
         }
         nav {
             background-color: #444;
@@ -66,44 +73,6 @@
             margin: 20px auto;
             max-width: 800px;
         }
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-        textarea {
-            height: 150px;
-        }
-        input[type="submit"] {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 12px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-        input[type="submit"]:hover {
-            background-color: #444;
-        }
         footer {
             background-color: #333;
             color: #fff;
@@ -113,24 +82,45 @@
             bottom: 0;
             width: 100%;
         }
-        footer p {
-            font-size: 14px;
+        .banner {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 40px 0;
         }
-
-        /* Mobile Styles */
-        @media screen and (max-width: 600px) {
-            form {
-                padding: 10px;
-            }
-            input[type="text"],
-            input[type="email"],
-            textarea {
-                font-size: 14px;
-            }
-            input[type="submit"] {
-                padding: 10px;
-                font-size: 14px;
-            }
+        .banner h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .banner p {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .about-us {
+            text-align: center;
+        }
+        .about-us h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .about-us p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        .about-us img {
+            max-width: 200px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        .about-us img:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -142,7 +132,9 @@
 
     <!-- Your main content goes here -->
     <header>
-        <h1>Tamar Dery Jewelry</h1>
+        <a href="index.html"> <!-- Wrap logo in anchor tag -->
+            <img class="logo" src="https://i.ibb.co/6wQ33J6/tamar-dery-logo2.png" alt="Tamar Dery Jewelry">
+        </a>
     </header>
     <nav>
         <a href="index.html">Home</a>
@@ -150,27 +142,17 @@
         <a href="about.html">About Us</a>
         <a href="contact.html">Contact</a>
     </nav>
-    <section>
-        <h2>Contact Us</h2>
-        <form action="#" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            <input type="submit" value="Submit">
-        </form>
+    <section class="about-us">
+        <h2>About Us</h2>
+        <p>Tamar Dery Jewelry is committed to providing our customers with the finest quality jewelry that is as unique and beautiful as they are. Our collection includes a wide range of stunning pieces crafted from precious metals and gemstones, each meticulously designed to capture the essence of elegance and sophistication.</p>
+        <img src="https://i.ibb.co/5rkwvLZ/about-us-icon.png" alt="About Us Icon">
     </section>
     <footer>
         <p>&copy; 2024 Tamar Dery Jewelry. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript to handle transition between pages and show/hide loading screen -->
+    <!-- Script to hide loading screen when content is fully loaded -->
     <script>
-        // Hide loading screen when content is fully loaded
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelector('.loading-screen').classList.add('loading');
         });
